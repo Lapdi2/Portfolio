@@ -158,7 +158,8 @@ img {
 
     font-family: var(--display-font);
 
-    font-size: clamp(58px, 10.8vw, 210px);
+    /* MODIFICATO: dimensione realmente fluida */
+    font-size: min(8.5vw, 210px);
 
     line-height: 0.85;
 
@@ -167,6 +168,8 @@ img {
     text-align: center;
 
     white-space: nowrap;
+
+    overflow: visible;
 }
 
 
@@ -355,7 +358,7 @@ img {
     padding:
         clamp(60px, 6vw, 105px)
         clamp(28px, 8vw, 150px)
-        clamp(100px, 9vw, 170px);
+        clamp(70px, 6vw, 110px);
 
     overflow: visible;
 }
@@ -403,7 +406,9 @@ img {
 
     font-family: var(--display-font);
 
-    font-size: clamp(58px, 9.3vw, 180px);
+    /* MODIFICATO: leggermente più piccolo per garantire
+       che gatto + PROJECTS rimangano sempre nel viewport */
+    font-size: min(8vw, 180px);
 
     line-height: 0.9;
 
@@ -437,7 +442,7 @@ img {
 
 
 /* =========================================================
-   PROJECT GRID
+   PROJECT GRID — HOME
    ========================================================= */
 
 .projects-grid {
@@ -448,9 +453,9 @@ img {
     display: grid;
 
     grid-template-columns:
-        repeat(3, minmax(0, 1fr));
+        repeat(4, minmax(0, 1fr));
 
-    gap: clamp(25px, 3vw, 55px);
+    gap: clamp(20px, 3vw, 45px);
 }
 
 
@@ -461,7 +466,9 @@ img {
 .project-card {
     display: block;
 
-    aspect-ratio: 480 / 500;
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
 
     background: var(--card);
 
@@ -481,12 +488,50 @@ img {
     opacity: 0.9;
 }
 
+
+/* ---------- PROJECT IMAGE ---------- */
+
 .project-card-image {
     background-position: center;
 
     background-size: cover;
 
     background-repeat: no-repeat;
+}
+
+
+/* =========================================================
+   SEE ALL PROJECTS
+   ========================================================= */
+
+.all-projects-link {
+    display: block;
+
+    width: fit-content;
+
+    margin:
+        clamp(35px, 4vw, 55px)
+        auto
+        0;
+
+    color: var(--dark-blue);
+
+    font-family: var(--body-font);
+
+    font-size: clamp(14px, 1.5vw, 26px);
+
+    line-height: 1;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    transition: opacity 0.2s ease;
+}
+
+.all-projects-link:hover,
+.all-projects-link:focus-visible {
+    opacity: 0.65;
 }
 
 
@@ -680,7 +725,8 @@ img {
     }
 
     .hero-title {
-        font-size: clamp(58px, 10.8vw, 150px);
+        /* MODIFICATO */
+        font-size: min(8.5vw, 150px);
 
         padding-left: 15px;
         padding-right: 15px;
@@ -740,7 +786,8 @@ img {
     }
 
     .projects-heading h2 {
-        font-size: clamp(58px, 9.3vw, 120px);
+        /* MODIFICATO */
+        font-size: min(8vw, 120px);
     }
 
     .projects-cat {
@@ -748,7 +795,22 @@ img {
     }
 
     .projects-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
         gap: 25px;
+    }
+
+    .project-card {
+        aspect-ratio: 1 / 1;
+
+        border-radius: 20px;
+    }
+
+    .all-projects-link {
+        margin-top: 35px;
+
+        font-size: clamp(13px, 2vw, 20px);
     }
 
 
@@ -759,10 +821,6 @@ img {
     }
 
     .contacts-cat {
-        /*
-           Leggermente più piccolo su tablet
-           per evitare che copra il telefono.
-        */
         width: 195px;
 
         right: -5px;
@@ -825,7 +883,8 @@ img {
             0
             12px;
 
-        font-size: min(13.5vw, 90px);
+        /* MODIFICATO */
+        font-size: min(10.5vw, 90px);
 
         line-height: 0.85;
 
@@ -948,7 +1007,7 @@ img {
         padding:
             60px
             24px
-            100px;
+            75px;
 
         overflow: visible;
     }
@@ -978,7 +1037,8 @@ img {
 
         min-width: 0;
 
-        font-size: min(12.5vw, 80px);
+        /* MODIFICATO */
+        font-size: min(10vw, 80px);
 
         line-height: 0.9;
 
@@ -992,7 +1052,9 @@ img {
     }
 
     .projects-cat {
-        width: min(10vw, 62px);
+        /* MODIFICATO: proporzione leggermente più contenuta
+           per lasciare spazio sufficiente a PROJECTS */
+        width: min(8vw, 62px);
 
         min-width: 28px;
 
@@ -1005,10 +1067,16 @@ img {
         transform: translateY(2%);
     }
 
-    .projects-grid {
-        grid-template-columns: 1fr;
 
-        gap: 22px;
+    /* ---------- PROJECT GRID ---------- */
+
+    .projects-grid {
+        width: 100%;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 18px;
     }
 
     .project-card {
@@ -1016,7 +1084,20 @@ img {
 
         aspect-ratio: 1 / 1;
 
-        border-radius: 20px;
+        border-radius: 18px;
+    }
+
+
+    /* ---------- SEE ALL PROJECTS ---------- */
+
+    .all-projects-link {
+        margin-top: 30px;
+
+        font-size: clamp(12px, 3.6vw, 17px);
+
+        line-height: 1;
+
+        white-space: nowrap;
     }
 
 
@@ -1175,7 +1256,8 @@ img {
     }
 
     .hero-title {
-        font-size: 13vw;
+        /* MODIFICATO */
+        font-size: 10vw;
 
         padding-left: 8px;
         padding-right: 8px;
@@ -1221,16 +1303,32 @@ img {
     }
 
     .projects-heading h2 {
-        font-size: 12vw;
+        /* MODIFICATO */
+        font-size: 9.2vw;
 
         letter-spacing: -0.065em;
     }
 
     .projects-cat {
-        width: 9vw;
+        /* MODIFICATO */
+        width: 8vw;
 
         min-width: 24px;
         max-width: 42px;
+    }
+
+    .projects-grid {
+        gap: 14px;
+    }
+
+    .project-card {
+        border-radius: 15px;
+    }
+
+    .all-projects-link {
+        margin-top: 26px;
+
+        font-size: 3.5vw;
     }
 
 
